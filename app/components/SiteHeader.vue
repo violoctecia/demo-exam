@@ -5,7 +5,7 @@
 				to="/"
 				class="flex items-center gap-4"
 			>
-				<div class="w-10 h-10 rounded-(--radius) bg-gradient-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
+				<div class="w-10 h-10 rounded-(--radius) bg-linear-to-br from-primary to-secondary flex items-center justify-center shadow-lg">
 					<svg
 						class="w-6 h-6 text-white"
 						fill="none"
@@ -26,10 +26,11 @@
 						/>
 					</svg>
 				</div>
-				<span class="text-xl font-medium">Корочки.есть</span>
+				<span class="text-xl font-medium hidden md:block">Корочки.есть</span>
 			</nuxt-link>
 			<div class="flex items-center gap-4">
 				<nuxt-link
+					v-if="!isUserAuthorized"
 					class="button"
 					to="/login"
 				>
@@ -41,7 +42,25 @@
 				>
 					Оформить заявку
 				</nuxt-link>
+				<button
+					v-if="isUserAuthorized"
+					class="button bg-transparent! text-primary!"
+					@click="logout"
+				>
+					Выход
+				</button>
 			</div>
 		</div>
 	</header>
 </template>
+
+<script setup lang="ts">
+const token = useCookie('auth_token');
+const isUserAuthorized = computed(() => !!token.value);
+
+const logout = async () => {
+	await $fetch('/api/auth/logout', { method: 'POST' });
+	token.value = null;
+	navigateTo('/login');
+};
+</script>

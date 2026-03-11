@@ -51,28 +51,11 @@ async function logout() {
 </script>
 
 <template>
-	<main class="container min-h-screen py-12">
-		<!-- Header -->
-		<div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-10 gap-4">
-			<div>
-				<h1 class="text-3xl font-bold">Мои заявки</h1>
-				<p class="text-text/60 mt-1">История ваших записей на курсы</p>
-			</div>
-			<div class="flex items-center gap-3">
-				<NuxtLink to="/orders/create" class="button">
-					+ Новая заявка
-				</NuxtLink>
-				<button
-					@click="logout"
-					class="px-4 py-2 rounded-(--radius) border border-border text-text/60 hover:text-red-500 hover:border-red-300 transition-colors text-sm font-medium"
-				>
-					Выход
-				</button>
-			</div>
-		</div>
-
-		<!-- Loading -->
-		<div v-if="pending" class="text-center py-20 text-text/40 text-lg animate-pulse">
+	<main class="container min-h-screen py-12!">
+		<div
+			v-if="pending"
+			class="text-center py-20 text-text/40 text-lg animate-pulse"
+		>
 			Загрузка заявок...
 		</div>
 
@@ -84,13 +67,19 @@ async function logout() {
 			<div class="text-5xl mb-4">📋</div>
 			<h3 class="text-xl font-semibold mb-2">Заявок пока нет</h3>
 			<p class="text-text/50 mb-8">Выберите курс и оформите первую заявку на обучение</p>
-			<NuxtLink to="/orders/create" class="button inline-flex">
+			<NuxtLink
+				to="/orders/create"
+				class="button inline-flex"
+			>
 				Выбрать курс
 			</NuxtLink>
 		</div>
 
 		<!-- Orders Grid -->
-		<div v-else class="grid grid-cols-1 md:grid-cols-2 gap-6">
+		<div
+			v-else
+			class="grid grid-cols-1 md:grid-cols-2 gap-6"
+		>
 			<div
 				v-for="order in data.orders"
 				:key="order.id_order"
@@ -117,9 +106,7 @@ async function logout() {
 						<span class="font-medium text-text">Оплата:</span>
 						{{ order.payment_method || 'Не указан' }}
 					</p>
-					<p class="text-xs text-text/40 pt-1">
-						Создано: {{ new Date(order.date).toLocaleDateString('ru-RU') }}
-					</p>
+					<p class="text-xs text-text/40 pt-1">Создано: {{ new Date(order.date).toLocaleDateString('ru-RU') }}</p>
 				</div>
 
 				<!-- Feedback -->
@@ -139,7 +126,10 @@ async function logout() {
 							>
 								Оставить отзыв →
 							</button>
-							<div v-else class="space-y-3">
+							<div
+								v-else
+								class="space-y-3"
+							>
 								<textarea
 									v-model="reviewText"
 									rows="3"
@@ -164,7 +154,10 @@ async function logout() {
 							</div>
 						</template>
 					</template>
-					<p v-else class="text-xs text-text/40">
+					<p
+						v-else
+						class="text-xs text-text/40"
+					>
 						Отзыв доступен после завершения обучения
 					</p>
 				</div>

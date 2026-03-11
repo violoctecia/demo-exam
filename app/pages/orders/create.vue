@@ -53,7 +53,7 @@ async function submitOrder() {
 </script>
 
 <template>
-	<main class="container min-h-screen flex items-center justify-center py-12">
+	<main class="container min-h-screen flex items-center justify-center py-12!">
 		<div class="max-w-xl w-full backdrop-blur-xl bg-white/10 rounded-(--radius) p-8 shadow-xl border border-border">
 			<!-- Title -->
 			<div class="text-center mb-8">
@@ -61,11 +61,17 @@ async function submitOrder() {
 				<p class="mt-2 text-text/60">Выберите курс и укажите удобную дату старта</p>
 			</div>
 
-			<form @submit.prevent="submitOrder" class="flex flex-col gap-6">
+			<form
+				@submit.prevent="submitOrder"
+				class="flex flex-col gap-6"
+			>
 				<!-- Course -->
 				<div>
 					<label class="block text-sm font-medium mb-2">Наименование курса</label>
-					<div v-if="loadingCourses" class="text-text/40 text-sm animate-pulse py-3">
+					<div
+						v-if="loadingCourses"
+						class="text-text/40 text-sm animate-pulse py-3"
+					>
 						Загрузка списка курсов...
 					</div>
 					<select
@@ -74,7 +80,12 @@ async function submitOrder() {
 						required
 						class="w-full px-4 py-3 border border-border rounded-(--radius) focus:ring-2 focus:ring-primary focus:border-transparent transition-all bg-background"
 					>
-						<option value="" disabled>Выберите курс из списка</option>
+						<option
+							value=""
+							disabled
+						>
+							Выберите курс из списка
+						</option>
 						<option
 							v-for="course in courses"
 							:key="course.id_cours"
@@ -121,19 +132,32 @@ async function submitOrder() {
 				</div>
 
 				<!-- Error / Success -->
-				<div v-if="errorMsg" class="text-red-400 text-sm text-center py-2 font-medium">
+				<div
+					v-if="errorMsg"
+					class="text-red-400 text-sm text-center py-2 font-medium"
+				>
 					{{ errorMsg }}
 				</div>
-				<div v-if="successMsg" class="text-green-500 text-sm text-center py-2 font-medium">
+				<div
+					v-if="successMsg"
+					class="text-green-500 text-sm text-center py-2 font-medium"
+				>
 					{{ successMsg }}
 				</div>
 
 				<!-- Actions -->
 				<div class="flex flex-col gap-3 pt-2">
-					<button type="submit" :disabled="loading" class="button w-full py-3 disabled:opacity-50">
+					<button
+						type="submit"
+						:disabled="loading"
+						class="button w-full py-3 disabled:opacity-50"
+					>
 						{{ loading ? 'Отправка заявки...' : 'Отправить заявку' }}
 					</button>
-					<NuxtLink to="/orders" class="text-center text-sm text-text/60 hover:text-primary transition-colors">
+					<NuxtLink
+						to="/orders"
+						class="text-center text-sm text-text/60 hover:text-primary transition-colors"
+					>
 						← Назад к заявкам
 					</NuxtLink>
 				</div>
