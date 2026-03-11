@@ -15,26 +15,6 @@ npm run dev
 - `<script>` — логика на JS/TS
 - `<style>` — стили компонента (опционально)
 
-
-
-## Продакшен-режим
-
-```bash
-docker-compose --profile prod up -d
-```
-
-
----
-
-## Остановить
-
-```bash
-docker-compose --profile dev down    # или prod
-docker-compose --profile dev down -v # + удалить тома (сброс БД)
-```
-
----
-
 ## Доступ
 
 | Роль | Логин | Пароль | Страница |
