@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id_user    Int     @id @default(autoincrement())
+  login      String  @unique @db.VarChar(50)
+  pass       String  @db.VarChar(255)
+  first_name String  @db.VarChar(50)
+  last_name  String  @db.VarChar(50)
+  surname    String? @db.VarChar(50)
+  phone      String? @db.VarChar(20)
+  email      String  @unique @db.VarChar(100)
+
+  orders Order[]
+
+  @@map("User")
+}
+
+model Courses {
+  id_cours    Int    @id @default(autoincrement())
+  course_name String @db.VarChar(255)
+
+  orders Order[]
+
+  @@map("courses")
+}
+
+model Status {
+  id_status   Int    @id
+  name_status String @db.VarChar(50)
+
+  orders Order[]
+
+  @@map("status")
+}
+
+model Order {
+  id_order       Int       @id @default(autoincrement())
+  date           DateTime  @default(now())
+  pay            Decimal   @default(0.00) @db.Decimal(10, 2)
+  feedback       String?
+  start_date     String?   @db.VarChar(20)  // DD.MM.YYYY
+  payment_method String?   @db.VarChar(50)  // 'Наличными' | 'Переводом'
+
+  id_cours  Int
+  id_status Int @default(1)
+  id_user   Int
+
+  course  Courses @relation(fields: [id_cours], references: [id_cours], onDelete: Cascade)
+  status  Status  @relation(fields: [id_status], references: [id_status], onDelete: Restrict)
+  user    User    @relation(fields: [id_user], references: [id_user], onDelete: Cascade)
+
+  @@map("orders")
+}
+

@@ -1,0 +1,63 @@
+/* Сброс + подключение стилей tailwind */
+@import 'tailwindcss';
+@import './fonts.css';
+
+/* МЕНЯЙТЕ ПЕРЕМЕННЫЕ здесь */
+:root {
+	/* Шрифт, вместо Manrope в скобках в переменной font-family можно указать одно из доступных значений:
+	- Inter
+	- Open Sans
+	- Manrope
+	- Montserrat */
+	--font-family: 'Manrope', sans-serif;
+
+	--color-primary: #6366f1; /* Цвет бренда */
+	--color-secondary: #8b5cf6; /* Вспомогательный цвет */
+	--color-background: #f8f8f8; /* Цвет фона */
+	--color-text: #111111; /* Цвет текста */
+	--color-border: #d5d5d5; /* Цвет границ */
+
+	--radius: 12px;
+}
+
+@theme inline {
+	--font-family: var(--font-family);
+	--color-primary: var(--color-primary);
+	--color-secondary: var(--color-secondary);
+	--color-background: var(--color-background);
+	--color-text: var(--color-text);
+	--radius: var(--radius);
+	--color-border: var(--color-border);
+}
+
+/* Базовые стили */
+body {
+	color: var(--color-text);
+	background-color: var(--color-background);
+	font-family: var(--font-family);
+}
+
+.container {
+	max-width: 1232px;
+	margin: 0 auto;
+	padding: 0 16px;
+}
+
+.button {
+	padding: 6px 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	text-align: center;
+	text-decoration: none;
+	color: var(--color-background);
+	background-color: var(--color-primary);
+	border-radius: var(--radius);
+	border: 1px solid var(--color-primary);
+
+	transition: background-color 0.3s ease;
+}
+.button:hover {
+	background-color: var(--color-secondary);
+}

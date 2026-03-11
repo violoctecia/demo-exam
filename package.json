@@ -1,0 +1,36 @@
+{
+	"name": "nuxt",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"build": "nuxt build",
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare",
+		"start": "node .output/server/index.mjs",
+		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"@nuxt/eslint": "1.15.2",
+		"@prisma/adapter-pg": "^7.4.2",
+		"@prisma/client": "^7.4.2",
+		"nuxt": "^4.3.1",
+		"pg": "^8.20.0",
+		"postgres": "^3.4.8",
+		"vue": "^3.5.30",
+		"vue-router": "^4.6.4"
+	},
+	"devDependencies": {
+		"@nuxtjs/tailwindcss": "7.0.0-beta.1",
+		"@types/node": "^25.0.8",
+		"@types/pg": "^8.18.0",
+		"dotenv": "^17.3.1",
+		"prettier": "^3.7.4",
+		"prisma": "^7.4.2",
+		"tailwindcss": "^4.2.1",
+		"tsx": "^4.21.0",
+		"typescript": "^5.9.3",
+		"vue-tsc": "^3.2.2"
+	}
+}
