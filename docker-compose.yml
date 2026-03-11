@@ -21,6 +21,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile.dev
+        pull_policy: build
         volumes:
             - .:/app                  # исходники монтируются — hot reload работает
             - /app/node_modules       # node_modules из образа, не с хоста
@@ -45,6 +46,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
+        pull_policy: build
         ports:
             - '3000:3000'
         env_file: .env
