@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
 	}
 
 	// Check for admin role logic
-	if (login === 'Admin' && pass === 'KorNET') {
+	if (login === 'adminka' && pass === 'password') {
 		setCookie(event, 'auth_token', 'admin', {
 			path: '/',
 			maxAge: 60 * 60 * 24 * 7, // 1 week

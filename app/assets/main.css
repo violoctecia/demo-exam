@@ -17,9 +17,13 @@
 	--color-text: #111111; /* Цвет текста */
 	--color-border: #d5d5d5; /* Цвет границ */
 
-	--radius: 12px;
+	--radius: 12px; /* Скругления у блоков */
 }
 
+/* 
+Это дублирование переменных для Tailwind, например text-primary 
+Трогать не стоит 
+*/
 @theme inline {
 	--font-family: var(--font-family);
 	--color-primary: var(--color-primary);
@@ -30,7 +34,6 @@
 	--color-border: var(--color-border);
 }
 
-/* Базовые стили */
 body {
 	color: var(--color-text);
 	background-color: var(--color-background);
